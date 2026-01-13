@@ -427,6 +427,10 @@ flex: 7 1 400px; */
     nav div.d-flex div:has(.code-arrow) {
         display: none;
     }
+
+    nav ul {
+        overflow: auto;
+    }
 }
 
 @media screen and (max-width: 600px) {
