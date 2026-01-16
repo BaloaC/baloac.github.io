@@ -446,6 +446,10 @@ flex: 7 1 400px; */
         font-size: 1.1rem;
     }
 
+    nav {
+        bottom: 0;
+    }
+
     nav > div {
         margin: 1rem auto !important;
         padding: 0.5rem !important;
