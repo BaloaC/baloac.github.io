@@ -184,6 +184,11 @@ nav ul a:hover {
     border: 1px solid #ffffff29;
 }
 
+.hover-primary:hover, .hover-primary:hover svg, .hover-primary:hover svg path {
+    color: var(--color-primary) !important;
+    fill: var(--color-primary) !important;
+}
+
 .d-flex {
     display: flex;
 }
