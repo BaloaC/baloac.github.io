@@ -542,4 +542,9 @@ flex: 7 1 400px; */
     .tab-btn {
         padding-inline: 1rem !important;
     }
+
+    .card-project-reverse {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+    }
 }
