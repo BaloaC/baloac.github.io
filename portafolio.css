@@ -564,12 +564,6 @@ nav ul a:hover {
     font-size: 0.85rem;
 }
 
-@media screen and (max-width: 600px) {
-    .metrics-container {
-        gap: 2rem;
-    }
-}
-
 .fs-0 { font-size: 0.85rem; }
 .fs-1 { font-size: 4rem; }
 .fs-2 { font-size: 3rem; }
@@ -578,14 +572,6 @@ nav ul a:hover {
 .fs-5 { font-size: 1.2rem; }
 
 .text-white-50 { color: rgba(255, 255, 255, 0.7) !important; }
-
-
-@media screen and (max-width: 768px) {
-    .fs-1 { font-size: 2.8rem; }
-    .fs-2 { font-size: 2.2rem; }
-    .fs-3 { font-size: 1.5rem; }
-    .fs-5 { font-size: 1.1rem; }
-}
 
 .icon-badge {
     width: 44px;
@@ -658,18 +644,6 @@ nav ul a:hover {
     font-size: 1.05rem;
     font-weight: 600;
     color: #ffffff;
-}
-
-@media screen and (max-width: 600px) {
-    .skills-grid {
-        gap: 0.75rem;
-    }
-    .skill-pill {
-        padding: 0.6rem 1rem;
-    }
-    .skill-name {
-        font-size: 0.9rem;
-    }
 }
 
 .experience-container {
@@ -877,12 +851,6 @@ a.contact-info-item:hover {
     transform: translateY(-2px);
 }
 
-@media screen and (max-width: 600px) {
-    .contact-card {
-        padding: 2rem 1.4rem;
-    }
-}
-
 .list-languages {
     display: flex;
     align-items: center;
@@ -986,16 +954,39 @@ a.contact-info-item:hover {
 }
 
 @media screen and (max-width: 786px) {
+    .fs-1 { font-size: 2.8rem; }
+    .fs-2 { font-size: 2.2rem; }
+    .fs-3 { font-size: 1.5rem; }
+    .fs-5 { font-size: 1.1rem; }
+
     nav div.d-flex div:has(.code-arrow) {
         display: none;
     }
 
     nav ul {
-        overflow: auto;
+        overflow-x: auto;
     }
 }
 
 @media screen and (max-width: 600px) {
+    .metrics-container {
+        gap: 2rem;
+    }
+
+    .skills-grid {
+        gap: 0.75rem;
+    }
+    .skill-pill {
+        padding: 0.6rem 1rem;
+    }
+    .skill-name {
+        font-size: 0.9rem;
+    }
+
+    .contact-card {
+        padding: 2rem 1.4rem;
+    }
+
     body, #study p {
         font-size: 14px;
     }
@@ -1022,7 +1013,13 @@ a.contact-info-item:hover {
     }
 
     nav ul {
-        overflow: auto;
+        overflow-x: auto;
+        justify-content: flex-start !important;
+        padding-inline: 0.5rem;
+    }
+
+    nav ul li {
+        flex-shrink: 0;
     }
 
     nav ul li a {
@@ -1030,7 +1027,9 @@ a.contact-info-item:hover {
         flex-direction: column-reverse;
         align-items: center;
         row-gap: 0.3rem;
-        margin-inline: 0.8rem;
+        margin-inline: 0.5rem;
+        white-space: nowrap;
+        color: #ffffff;
     }
 
     nav ul a svg {
