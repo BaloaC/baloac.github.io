@@ -891,6 +891,16 @@ a.contact-info-item:hover {
     }
 }
 
+.animate-fade-delay-4 {
+    opacity: 0;
+    animation: fade 0.8s ease-out 0.4s forwards;
+}
+
+.animate-fade-delay-2 {
+    opacity: 0;
+    animation: fade 0.8s ease-out 0.2s forwards;
+}
+
 .animate-fade {
     opacity: 0;
     animation: fade 0.8s ease-out forwards;
