@@ -1,0 +1,108 @@
+class PortfolioManager {
+    constructor() {
+        this.hasAnimatedHabilities = false;
+        this.init();
+    }
+
+    init() {
+        document.addEventListener('DOMContentLoaded', () => {
+            this.initGeneralScrollAnimations();
+            this.initHabilitiesScrollAnimation();
+            this.initWorkbenchFilters();
+        });
+    }
+
+    initGeneralScrollAnimations() {
+        const observer = new IntersectionObserver(
+            (entries, observerInstance) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target;
+                        const sectionItems = Array.from(section.querySelectorAll('.animate:not(.is-visible)'));
+
+                        if (sectionItems.length > 0) {
+                            sectionItems.forEach((el, index) => {
+                                const delay = 0.2 + index * 0.12;
+                                el.style.animationDelay = `${delay}s`;
+                                el.classList.add('is-visible');
+                            });
+                            observerInstance.unobserve(section);
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px',
+            }
+        );
+
+        const sections = document.querySelectorAll('section, .stage-section, header');
+        sections.forEach((section) => observer.observe(section));
+    }
+
+    initHabilitiesScrollAnimation() {
+        const habilitiesSection = document.getElementById('habilities');
+        if (!habilitiesSection) return;
+
+        const observer = new IntersectionObserver(
+            (entries, observerInstance) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !this.hasAnimatedHabilities) {
+                        this.hasAnimatedHabilities = true;
+
+                        const visibleCapsules = document.querySelectorAll(
+                            '#workbenchMatrix .tech-capsule:not(.hidden)'
+                        );
+
+                        visibleCapsules.forEach((capsule, index) => {
+                            const delay = 0.34 + index * 0.06;
+                            capsule.style.animationDelay = `${delay}s`;
+                            capsule.classList.add('animated');
+                        });
+
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+
+        observer.observe(habilitiesSection);
+    }
+
+    initWorkbenchFilters() {
+        window.filterWorkbench = (category, button) => {
+            const buttons = document.querySelectorAll('.workbench-filters .filter-chip-btn');
+            buttons.forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const capsules = document.querySelectorAll('#workbenchMatrix .tech-capsule');
+            let visibleIndex = 0;
+
+            capsules.forEach((capsule) => {
+                const capsuleCategory = capsule.getAttribute('data-cat');
+                const matches = category === 'all' || capsuleCategory === category;
+
+                if (matches) {
+                    capsule.classList.remove('hidden');
+
+                    const delay = 0.34 + visibleIndex * 0.06;
+
+                    capsule.classList.remove('animated');
+                    capsule.style.animation = 'none';
+                    capsule.offsetHeight; 
+
+                    capsule.style.animation = `capsulePopIn 0.5s var(--ease-out) ${delay}s both`;
+                    capsule.classList.add('animated');
+
+                    visibleIndex++;
+                } else {
+                    capsule.classList.add('hidden');
+                }
+            });
+        };
+    }
+}
+
+const portfolio = new PortfolioManager();
